@@ -42,7 +42,7 @@ class ReplaceWidget extends StatelessWidget {
           width: size.width * 0.15,
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(20)),
-          child: Center(
+          child: const Center(
             child: Icon(Icons.tune),
           ),
         )
