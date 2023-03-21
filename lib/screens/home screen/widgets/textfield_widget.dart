@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:to_do_app_firebase/screens/home%20screen/home_screen.dart';
 
 class TextfieldWidget extends StatelessWidget {
   const TextfieldWidget({
@@ -21,14 +21,50 @@ class TextfieldWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SizedBox(
-              width: size.width * 0.5,
-              child: const TextField(),
+              width: size.width * 0.45,
+              child: TextField(
+                onTap: () {
+                  isGatergorySheet.value = false;
+                },
+                autofocus: true,
+                onSubmitted: (value) {
+                  isTextfield.value = false;
+                  isGatergorySheet.value = false;
+                },
+                decoration: const InputDecoration(
+                    border: InputBorder.none, hintText: 'Write a new task'),
+              ),
             ),
-            Container(
-              width: size.width * 0.25,
-              height: size.height * 0.05,
-              decoration: BoxDecoration(
-                  color: Colors.grey, borderRadius: BorderRadius.circular(10)),
+            InkWell(
+              onTap: () {
+                FocusScope.of(context).requestFocus(FocusNode());
+                isGatergorySheet.value = true;
+              },
+              child: Container(
+                width: size.width * 0.3,
+                height: size.height * 0.05,
+                decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      height: 15,
+                      width: 15,
+                      // color: Colors.red,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(color: Colors.red, width: 2)),
+                    ),
+                    const Text('personal'),
+                    const Icon(
+                      Icons.arrow_drop_down_rounded,
+                      size: 20,
+                    )
+                  ],
+                ),
+              ),
             )
           ],
         ),

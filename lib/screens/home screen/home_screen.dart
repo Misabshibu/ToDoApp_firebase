@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app_firebase/screens/home%20screen/widgets/filter_widget.dart';
+import 'package:to_do_app_firebase/screens/home%20screen/widgets/category_sheet.dart';
 import 'package:to_do_app_firebase/screens/home%20screen/widgets/textfield_widget.dart';
 import 'package:to_do_app_firebase/screens/home%20screen/widgets/todolists.dart';
 
-ValueNotifier<bool> isTextfield = ValueNotifier<bool>(true);
+ValueNotifier<bool> isTextfield = ValueNotifier<bool>(false);
+ValueNotifier<bool> isGatergorySheet = ValueNotifier<bool>(false);
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -35,12 +37,13 @@ class HomeScreen extends StatelessWidget {
                 valueListenable: isTextfield,
                 builder: (context, value, _) {
                   return isTextfield.value
-                      ? ReplaceWidget(size: size)
-                      : TextfieldWidget(size: size);
+                      ? TextfieldWidget(size: size)
+                      : ReplaceWidget(size: size);
                 }),
             SizedBox(
               height: size.height * 0.01,
             ),
+            CategorySheet(size: size),
           ],
         ),
       ),

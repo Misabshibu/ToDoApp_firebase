@@ -46,7 +46,6 @@ class TodoLists extends StatelessWidget {
                     Container(
                       height: 15,
                       width: 15,
-                      // color: Colors.red,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           border: Border.all(color: Colors.red, width: 2)),

@@ -16,7 +16,7 @@ class ReplaceWidget extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            isTextfield.value = false;
+            isTextfield.value = true;
           },
           child: Container(
             height: size.height * 0.07,
