@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app_firebase/screens/auth/auth_screen.dart';
+import '../../functions/auth_functions.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    navigateAuthPage(context);
+    //Navigating after checking that login or not
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      AuthFunctions.samapfunct(context: context);
+      // Add Your Code here.
+    });
+    //----------------------------------------------//
+
     return const Scaffold(
       body: Center(
           child: Text(
@@ -14,17 +20,4 @@ class SplashScreen extends StatelessWidget {
       )),
     );
   }
-}
-
-//---------------------------------------------------------------------//
-
-//navigate function to auth screen
-navigateAuthPage(context) {
-  Future.delayed(
-      const Duration(
-        seconds: 2,
-      ), () {
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => AuthScreen()));
-  });
 }

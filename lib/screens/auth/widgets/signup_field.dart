@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import '../../../functions/auth_functions.dart';
+import '../../widgets/authbutton.dart';
+import '../../widgets/authtextfield.dart';
 
 class SignupField extends StatelessWidget {
-  const SignupField({
+  SignupField({
     super.key,
-    required this.size,
   });
 
-  final Size size;
+  final TextEditingController nameContorller = TextEditingController();
+  final TextEditingController emailContorller = TextEditingController();
+  final TextEditingController passwordContorller = TextEditingController();
+  final TextEditingController confirmPasswordContorller =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.only(top: 30),
       child: Column(
@@ -34,51 +41,31 @@ class SignupField extends StatelessWidget {
                             SizedBox(
                               height: size.height * 0.02,
                             ),
-                            TextFormField(
-                              decoration: const InputDecoration(
+                            AuthTextField(
+                                controller: nameContorller,
                                 hintText: 'Name',
-                                prefixIcon: Icon(
-                                  Icons.person_2_outlined,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
+                                icon: Icons.abc),
                             SizedBox(
                               height: size.height * 0.02,
                             ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                hintText: 'Email Address',
-                                prefixIcon: Icon(
-                                  Icons.mail_outline_outlined,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
+                            AuthTextField(
+                                controller: emailContorller,
+                                hintText: 'Email',
+                                icon: Icons.mail),
                             SizedBox(
                               height: size.height * 0.02,
                             ),
-                            TextFormField(
-                              decoration: const InputDecoration(
+                            AuthTextField(
+                                controller: passwordContorller,
                                 hintText: 'Password',
-                                prefixIcon: Icon(
-                                  Icons.lock_outline,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
+                                icon: Icons.password),
                             SizedBox(
                               height: size.height * 0.02,
                             ),
-                            TextFormField(
-                              decoration: const InputDecoration(
+                            AuthTextField(
+                                controller: confirmPasswordContorller,
                                 hintText: 'Confirm Password',
-                                prefixIcon: Icon(
-                                  Icons.lock_outline,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
+                                icon: Icons.password),
                             SizedBox(
                               height: size.height * 0.02,
                             ),
@@ -88,25 +75,53 @@ class SignupField extends StatelessWidget {
                     ),
                   ],
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    width: size.width * 0.4,
-                    height: size.height * 0.08,
-                    decoration: BoxDecoration(
-                        color: const Color(0xff0b2545),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Center(
-                      child: Text(
-                        'SignUp',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                )
+                //signup button
+                // Align(
+                //   alignment: Alignment.bottomCenter,
+                //   child: InkWell(
+                //     onTap: () {
+                //   FirebaseAuth.instance
+                //       .createUserWithEmailAndPassword(
+                //           email: emailContorller.text.trim(),
+                //           password: passwordContorller.text.trim())
+                //       .then((value) {
+                //     Navigator.pushReplacement(
+                //         context,
+                //         MaterialPageRoute(
+                //             builder: (context) => const HomeScreen()));
+                //   });
+                // },
+                //     child: Container(
+                //       width: size.width * 0.4,
+                //       height: size.height * 0.08,
+                //       decoration: BoxDecoration(
+                //           color: const Color(0xff0b2545),
+                //           borderRadius: BorderRadius.circular(10)),
+                //       child: const Center(
+                //         child: Text(
+                //           'SignUp',
+                //           style: TextStyle(
+                //               color: Colors.white,
+                //               fontSize: 20,
+                //               fontWeight: FontWeight.bold),
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // )
+                AuthButton(
+                    onTapfunc: () {
+                      AuthFunctions.createUser(
+                          name: nameContorller.text.trim(),
+                          email: emailContorller.text.trim());
+                      AuthFunctions.signupUser(
+                          email: emailContorller.text.trim(),
+                          password: passwordContorller.text.trim(),
+                          context: context);
+                    },
+                    buttonText: 'SignUp',
+                    width: 0.4,
+                    heigh: 0.08)
               ],
             ),
           ),

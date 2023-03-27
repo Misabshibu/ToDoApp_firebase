@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app_firebase/screens/auth/auth_screen.dart';
+import '../auth_screen.dart';
 
 class ToggleLoginSignup extends StatefulWidget {
   const ToggleLoginSignup({super.key});

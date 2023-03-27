@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app_firebase/screens/home%20screen/widgets/filter_widget.dart';
-import 'package:to_do_app_firebase/screens/home%20screen/widgets/category_sheet.dart';
-import 'package:to_do_app_firebase/screens/home%20screen/widgets/textfield_widget.dart';
-import 'package:to_do_app_firebase/screens/home%20screen/widgets/todolists.dart';
+import '../../functions/auth_functions.dart';
+import '../home%20screen/widgets/filter_widget.dart';
+import '../home%20screen/widgets/category_sheet.dart';
+import '../home%20screen/widgets/textfield_widget.dart';
+import '../home%20screen/widgets/todolists.dart';
 
 ValueNotifier<bool> isTextfield = ValueNotifier<bool>(false);
 ValueNotifier<bool> isGatergorySheet = ValueNotifier<bool>(false);
+
+final List<String> appbarMessages = [
+  'Get things done',
+  'Maximize your efficiency',
+  'Stay on top.',
+  'Streamline your tasks',
+  'Simplify your life',
+  'Optimize your workflow',
+  'Boost your productivity',
+  'Take control today',
+  'Make it happen'
+];
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -21,8 +34,12 @@ class HomeScreen extends StatelessWidget {
         ),
         backgroundColor: const Color(0xff14213d),
         actions: [
-          const Icon(Icons.more_vert),
-          SizedBox(width: size.width * 0.03)
+          IconButton(
+              onPressed: () {
+                AuthFunctions.signoutUser(context: context);
+              },
+              icon: const Icon(Icons.logout)),
+          // SizedBox(width: size.width * 0.03)
         ],
       ),
       body: Padding(

@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import '../../../functions/auth_functions.dart';
+import '../../widgets/authbutton.dart';
+import '../../widgets/authtextfield.dart';
 
 class LoginField extends StatelessWidget {
-  const LoginField({
+  LoginField({
     super.key,
-    required this.size,
   });
 
-  final Size size;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Column(
       children: [
         SizedBox(
@@ -27,50 +31,67 @@ class LoginField extends StatelessWidget {
                   padding: const EdgeInsets.all(15),
                   child: Column(
                     children: [
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          hintText: 'Email Address',
-                          prefixIcon: Icon(
-                            Icons.mail_outline_outlined,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
+                      AuthTextField(
+                          controller: emailController,
+                          hintText: 'Email',
+                          icon: Icons.mail),
                       SizedBox(
                         height: size.height * 0.02,
                       ),
-                      TextFormField(
-                        decoration: const InputDecoration(
+                      AuthTextField(
+                          controller: passwordController,
                           hintText: 'Password',
-                          prefixIcon: Icon(
-                            Icons.lock_outline_sharp,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
+                          icon: Icons.password),
                       const Spacer()
                     ],
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  width: size.width * 0.4,
-                  height: size.height * 0.08,
-                  decoration: BoxDecoration(
-                      color: const Color(0xff0b2545),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: const Center(
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
+
+              //Login button
+              // Align(
+              //   alignment: Alignment.bottomCenter,
+              //   child: InkWell(
+              //     onTap: () {
+              //       FirebaseAuth.instance
+              //           .signInWithEmailAndPassword(
+              //               email: emailController.text.trim(),
+              //               password: passwordController.text.trim())
+              //           .then((value) {
+              //         Navigator.pushReplacement(
+              //             context,
+              //             MaterialPageRoute(
+              //                 builder: (context) => const HomeScreen()));
+              //       });
+              //     },
+              //     child: Container(
+              //       width: size.width * 0.4,
+              //       height: size.height * 0.08,
+              //       decoration: BoxDecoration(
+              //           color: const Color(0xff0b2545),
+              //           borderRadius: BorderRadius.circular(10)),
+              //       child: const Center(
+              //         child: Text(
+              //           'Login',
+              //           style: TextStyle(
+              //               color: Colors.white,
+              //               fontSize: 20,
+              //               fontWeight: FontWeight.bold),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // )
+              AuthButton(
+                buttonText: 'Login',
+                width: 0.4,
+                heigh: 0.08,
+                onTapfunc: () {
+                  AuthFunctions.signingUser(
+                      email: emailController.text.trim(),
+                      password: passwordController.text.trim(),
+                      context: context);
+                },
               )
             ],
           ),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app_firebase/screens/auth/widgets/login_field.dart';
-import 'package:to_do_app_firebase/screens/auth/widgets/toggle_auth.dart';
+import 'widgets/login_field.dart';
+import 'widgets/toggle_auth.dart';
 
 import 'widgets/signup_field.dart';
 
 ValueNotifier<bool> isLogin = ValueNotifier(true);
 
 class AuthScreen extends StatelessWidget {
-  const AuthScreen({super.key});
+  AuthScreen({super.key});
 
   static List<bool> isSelectedIndex = [true, false];
 
@@ -15,12 +15,14 @@ class AuthScreen extends StatelessWidget {
 
   static bool loginColor = true;
   static PageController pageController = PageController();
+  final List pages = [LoginField(), SignupField()];
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    List pages = [LoginField(size: size), SignupField(size: size)];
+
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xffdee2ff),
       body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         const Spacer(),

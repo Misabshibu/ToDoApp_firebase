@@ -1,7 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:to_do_app_firebase/screens/splash%20screen/splash_screen.dart';
+import 'screens/splash%20screen/splash_screen.dart';
 
-void main(List<String> args) {
+void main(List<String> args) async {
+  WidgetsFlutterBinding();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
