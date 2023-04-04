@@ -36,7 +36,30 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                AuthFunctions.signoutUser(context: context);
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text('Confirm Signout'),
+                        content:
+                            const Text('Do you want to Signout this account?'),
+                        actions: [
+                          TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Close')),
+                          TextButton(
+                              onPressed: () {
+                                AuthFunctions.signoutUser(context: context);
+                              },
+                              child: const Text(
+                                'Signout',
+                                style: TextStyle(color: Colors.red),
+                              )),
+                        ],
+                      );
+                    });
               },
               icon: const Icon(Icons.logout)),
           // SizedBox(width: size.width * 0.03)

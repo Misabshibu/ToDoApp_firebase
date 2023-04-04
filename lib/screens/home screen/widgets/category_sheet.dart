@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app_firebase/screens/home%20screen/widgets/textfield_widget.dart';
 import '../../home%20screen/home_screen.dart';
 
 class CategorySheet extends StatelessWidget {
@@ -8,12 +9,11 @@ class CategorySheet extends StatelessWidget {
   });
 
   final Size size;
-  final List<String> category = ["Personal", "Work", "Other ", "No list"];
+  final List<String> category = ["Personal", "Work", "Other"];
   final List<Color> categoryColor = [
     (Colors.green),
     (Colors.blue),
     (Colors.red),
-    (Colors.grey)
   ];
 
   @override
@@ -32,12 +32,14 @@ class CategorySheet extends StatelessWidget {
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20))),
               child: ListView.builder(
-                  itemCount: 4,
+                  itemCount: 3,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(top: 30),
                       child: InkWell(
                         onTap: () {
+                          TextfieldWidget.selectedCategory.value =
+                              category[index];
                           isGatergorySheet.value = false;
                         },
                         child: Row(

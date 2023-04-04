@@ -42,6 +42,7 @@ class SignupField extends StatelessWidget {
                               height: size.height * 0.02,
                             ),
                             AuthTextField(
+                                keyboardType: TextInputType.name,
                                 controller: nameContorller,
                                 hintText: 'Name',
                                 icon: Icons.abc),
@@ -49,6 +50,7 @@ class SignupField extends StatelessWidget {
                               height: size.height * 0.02,
                             ),
                             AuthTextField(
+                                keyboardType: TextInputType.emailAddress,
                                 controller: emailContorller,
                                 hintText: 'Email',
                                 icon: Icons.mail),
@@ -56,6 +58,7 @@ class SignupField extends StatelessWidget {
                               height: size.height * 0.02,
                             ),
                             AuthTextField(
+                                keyboardType: TextInputType.none,
                                 controller: passwordContorller,
                                 hintText: 'Password',
                                 icon: Icons.password),
@@ -63,6 +66,7 @@ class SignupField extends StatelessWidget {
                               height: size.height * 0.02,
                             ),
                             AuthTextField(
+                                keyboardType: TextInputType.none,
                                 controller: confirmPasswordContorller,
                                 hintText: 'Confirm Password',
                                 icon: Icons.password),

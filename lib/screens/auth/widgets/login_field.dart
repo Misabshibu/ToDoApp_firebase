@@ -32,6 +32,7 @@ class LoginField extends StatelessWidget {
                   child: Column(
                     children: [
                       AuthTextField(
+                          keyboardType: TextInputType.emailAddress,
                           controller: emailController,
                           hintText: 'Email',
                           icon: Icons.mail),
@@ -39,6 +40,7 @@ class LoginField extends StatelessWidget {
                         height: size.height * 0.02,
                       ),
                       AuthTextField(
+                          keyboardType: TextInputType.none,
                           controller: passwordController,
                           hintText: 'Password',
                           icon: Icons.password),
