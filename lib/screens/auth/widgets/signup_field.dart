@@ -58,7 +58,7 @@ class SignupField extends StatelessWidget {
                               height: size.height * 0.02,
                             ),
                             AuthTextField(
-                                keyboardType: TextInputType.none,
+                                keyboardType: TextInputType.text,
                                 controller: passwordContorller,
                                 hintText: 'Password',
                                 icon: Icons.password),
@@ -66,7 +66,7 @@ class SignupField extends StatelessWidget {
                               height: size.height * 0.02,
                             ),
                             AuthTextField(
-                                keyboardType: TextInputType.none,
+                                keyboardType: TextInputType.text,
                                 controller: confirmPasswordContorller,
                                 hintText: 'Confirm Password',
                                 icon: Icons.password),

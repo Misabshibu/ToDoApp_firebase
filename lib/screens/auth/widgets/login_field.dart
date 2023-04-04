@@ -40,7 +40,7 @@ class LoginField extends StatelessWidget {
                         height: size.height * 0.02,
                       ),
                       AuthTextField(
-                          keyboardType: TextInputType.none,
+                          keyboardType: TextInputType.text,
                           controller: passwordController,
                           hintText: 'Password',
                           icon: Icons.password),
